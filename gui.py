@@ -1,4 +1,4 @@
-import PySimpleGUI as sg
+mport PySimpleGUI as sg
 import serial
 import serial.tools.list_ports
 import numpy as np
@@ -55,24 +55,17 @@ while True:
 
     # data = [["350", "250", "250", "150"],["200","300","400","500"],["400", "100", "200", "200"]]
     data = ["350", "250", "250", "150", "200", "300", "400", "500", "400", "100", "200", "200","200", "300", "400", "500","500", "400", "100", "200"]
-    graphiclist=["0.2,0,0,0"]
+
     lisst = []
-    graphicsetings=[]
+
 
     with open('satis.csv', 'w') as file:
         waiting = csv.writer(file, delimiter=',', quotechar='"')
         waiting.writerows(data)
 
-    with open('test.csv', 'w') as testFile:
-        waiting = csv.writer(testFile, delimiter=',', quotechar='"')
-        waiting.writerows(graphiclist)
 
-    with open('satis.csv')as csvfile:
-        readCSV = csv.reader(csvfile)
-        for row in readCSV:
-            deneme = np.array(row)
-            ser.write(bytes(deneme))
-            graphicsetings.append(ser.readline().decode("utf-32").split(","))
+
+
 
     with open('satis.csv')as readfile:
         readCSV = csv.reader(readfile)
